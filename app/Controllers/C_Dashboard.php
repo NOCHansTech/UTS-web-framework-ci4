@@ -19,7 +19,7 @@ class C_Dashboard extends BaseController
         $data = [
             'title'        => 'Home | Tugas UTS',
             'page'         => 'dashboard',
-            'keuanganData' => $this->Bio->getData() // Pastikan ini mengembalikan data yang valid
+            'keuanganData' => $this->Bio->getData()
         ];
 
         return view('dashboard', $data);
@@ -38,20 +38,16 @@ class C_Dashboard extends BaseController
             'status'             => $this->request->getPost('status')
         ];
 
-        // Menambahkan data ke database
         $this->Bio->tambahData($data);
 
-        // Redirect ke halaman index (dashboard) setelah menambahkan data
         return redirect()->to('/');
     }
 
 
     public function detailData($transaksi)
     {
-        // Mengambil data profil mahasiswa dari model 'Bio' berdasarkan transaksi
         $detailData = $this->Bio->getDetailData($transaksi);
 
-        // Mengembalikan data profil dalam format JSON sebagai respons
         return $this->response->setJSON($detailData);
     }
 }
