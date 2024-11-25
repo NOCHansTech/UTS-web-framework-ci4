@@ -10,7 +10,6 @@ class C_Dashboard extends BaseController
 
     public function __construct()
     {
-        // Inisialisasi model M_Biodata
         $this->Bio = new M_Keuangan();
     }
 
